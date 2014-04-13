@@ -5,9 +5,16 @@
   "version": "0.0.1",
   "keywords": [],
   "dependencies": {
-    "ramitos/wheel": "*"
+    "component/bind": "*",
+    "component/classes": "*",
+    "component/css": "*",
+    "component/events": "*",
+    "component/inherit": "*",
+    "component/query": "*"
   },
-  "development": {},
+  "development": {
+    "component/event": "*"
+  },
   "license": "MIT",
   "main": "antiscroll.js",
   "scripts": [

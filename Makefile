@@ -1,3 +1,7 @@
+all: lint build
+
+lint:
+	@jshint antiscroll.js
 
 build: components antiscroll.js antiscroll.css template.html
 	@component build --dev
