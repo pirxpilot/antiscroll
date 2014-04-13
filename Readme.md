@@ -1,4 +1,6 @@
-# Antiscroll: cross-browser native OSX Lion scrollbars
+# antiscroll
+
+  OS X Lion style cross-browser native scrolling on the web that gets out of the way.
 
 Antiscroll fixes a fundamental problem JavaScript UI developers commonly face:
 how do I customize scrollbars so that they get out of the way (for example, for
@@ -7,6 +9,12 @@ widge scrolling velocity, or OS specific inertia)?
 
 Antiscroll addresses this issue by providing a cross-browser implementation of
 the scrollbars popularized by OS X Lion that retains native properties.
+
+## Installation
+
+  Install with [component(1)](http://component.io):
+
+    $ component install code42day/antiscroll
 
 ## Features
 
@@ -96,7 +104,7 @@ The inner element is always `overflow: scroll`.
 ### 3. Listen on the scroll event
 
 We attach the `scroll` event to the scrollable element, and we create our
-scrollbars as absolutely positioned divs. We update our scrollbars based on the 
+scrollbars as absolutely positioned divs. We update our scrollbars based on the
 detected `scrollLeft` and `scrollTop` of the element.
 
 ## Credits
@@ -114,7 +122,7 @@ Sharp](http://jdsharp.us/jQuery/minute/calculate-scrollbar-width.php).
 - Alexandre Rocha Lima e marcondes [@arlm](https://github.com/arlm)
 - Othree [@othree](https://github.com/othree)
 - PG Herveou [@pgherveou](https://github.com/pgherveou)
-- Fontaine Shu [@fontaineshu](https://github.com/fontaineshu) 
+- Fontaine Shu [@fontaineshu](https://github.com/fontaineshu)
 
 ## Dependencies
 
@@ -130,7 +138,7 @@ Sharp](http://jdsharp.us/jQuery/minute/calculate-scrollbar-width.php).
   technique if a touch-enabled browser is detected.
 - IE6 support
 
-## License 
+## License
 
 (The MIT License)
 

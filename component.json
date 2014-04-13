@@ -1,0 +1,22 @@
+{
+  "name": "antiscroll",
+  "repo": "code42day/antiscroll",
+  "description": "OS X Lion style cross-browser native scrolling on the web that gets out of the way.",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "ramitos/wheel": "*"
+  },
+  "development": {},
+  "license": "MIT",
+  "main": "antiscroll.js",
+  "scripts": [
+    "antiscroll.js"
+  ],
+  "templates": [
+    "template.html"
+  ],
+  "styles": [
+    "antiscroll.css"
+  ]
+}
