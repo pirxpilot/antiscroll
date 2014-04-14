@@ -16,6 +16,7 @@ module.exports = Antiscroll;
  */
 
 function Antiscroll (el, opts) {
+  if (!(this instanceof Antiscroll)) return new Antiscroll(el, opts);
   this.el = el;
   this.options = opts || {};
 
