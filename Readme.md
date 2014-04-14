@@ -1,4 +1,7 @@
-# Antiscroll: cross-browser native OSX Lion scrollbars
+# antiscroll
+
+OS X Lion style cross-browser native scrolling on the web that gets out of the way.
+It is a component compatible, jQuery free, clone of [LearnBoost/antiscroll]
 
 Antiscroll fixes a fundamental problem JavaScript UI developers commonly face:
 how do I customize scrollbars so that they get out of the way (for example, for
@@ -8,21 +11,25 @@ widge scrolling velocity, or OS specific inertia)?
 Antiscroll addresses this issue by providing a cross-browser implementation of
 the scrollbars popularized by OS X Lion that retains native properties.
 
+## Installation
+
+  Install with [component(1)](http://component.io):
+
+    $ component install code42day/antiscroll
+
 ## Features
 
 - Supports mousewheels, trackpads, other input devices natively.
-- Total size is **1kb** minified and gzipped.
 - Doesn't magically autowrap your elements with divs (manual wrapping is necessary,
   please see `index.html` demo)
 - Fade in/out controlled with CSS3 animations.
 - Shows scrollbars upon hovering.
 - Scrollbars are draggable.
 - Size of container can be dynamically adjusted and scrollbars will adapt.
-- Supports IE7+, Firefox 3+, Chrome, Safari
 
 ## Demo
 
-Please click [here](http://learnboost.github.com/antiscroll/) to see it in
+Please click [here](http://code42day.github.io/antiscroll/) to see it in
 action.
 
 ## Installation
@@ -32,9 +39,9 @@ action.
 1. Include the following Javascript
 
 ```javascript
-   $(function () {
-     $('.antiscroll-wrap').antiscroll();
-   });
+  var antiscroll = require('Antiscroll');
+
+  antiscroll(document.querySelector('.antiscroll-wrap'));
 ```
 
 ### Configuration
@@ -42,11 +49,9 @@ action.
 You may remove automatic scrollbar hiding by passing in a key-value to the ```antiscroll()``` function like so:
 
 ```javascript
-   $(function () {
-     $('.antiscroll-wrap').antiscroll({
-       autoHide: false
-     });
-   });
+  antiscroll(el, {
+    autoHide: false
+  });
 ```
 
 ## What does it look like?
@@ -96,7 +101,7 @@ The inner element is always `overflow: scroll`.
 ### 3. Listen on the scroll event
 
 We attach the `scroll` event to the scrollable element, and we create our
-scrollbars as absolutely positioned divs. We update our scrollbars based on the 
+scrollbars as absolutely positioned divs. We update our scrollbars based on the
 detected `scrollLeft` and `scrollTop` of the element.
 
 ## Credits
@@ -111,26 +116,16 @@ Sharp](http://jdsharp.us/jQuery/minute/calculate-scrollbar-width.php).
 
 ### Contributors
 
-- Alexandre Rocha Lima e marcondes [@arlm](https://github.com/arlm)
-- Othree [@othree](https://github.com/othree)
-- PG Herveou [@pgherveou](https://github.com/pgherveou)
-- Fontaine Shu [@fontaineshu](https://github.com/fontaineshu) 
-
-## Dependencies
-
-- [jQuery](http://github.com/jquery/query)
-- [jquery-mousewheel](https://github.com/brandonaaron/jquery-mousewheel): optional,
-  only needed if you want to block further scrolling when you reach the boundaries
-  of scrollable element.
+jQuery plugin written by [@guille]
+Other contributors listed [here](https://github.com/code42day/antiscroll/graphs/contributors)
 
 ## TODO
 
 - Automatically leverage Joe Hewitt's
   [scrollability](https://github.com/joehewitt/scrollability) as a replacement
   technique if a touch-enabled browser is detected.
-- IE6 support
 
-## License 
+## License
 
 (The MIT License)
 
@@ -154,3 +149,7 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
 CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+[LearnBoost/antiscroll]: https://github.com/LearnBoost/antiscroll
+[@guille]: https://github.com/guille
