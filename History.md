@@ -1,4 +1,9 @@
 
+1.2.0 / 2014-04-15
+==================
+
+ * remove vendor prefixes from CSS - require autoprefixer
+
 1.1.0 / 2014-04-15
 ==================
 
