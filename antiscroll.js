@@ -447,6 +447,11 @@ function scrollbarSize () {
     size = div.offsetWidth - div.clientWidth;
 
     document.body.removeChild(div);
+
+    if (size === 0) {
+      // HACK: assume it's a floating scrollbars browser like FF on MacOS Lion
+      size = 14;
+    }
   }
 
   return size;
