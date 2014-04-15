@@ -2144,6 +2144,7 @@ module.exports = Antiscroll;\n\
  */\n\
 \n\
 function Antiscroll (el, opts) {\n\
+  if (!(this instanceof Antiscroll)) return new Antiscroll(el, opts);\n\
   this.el = el;\n\
   this.options = opts || {};\n\
 \n\
@@ -2223,7 +2224,7 @@ Antiscroll.prototype.destroy = function () {\n\
 \n\
 Antiscroll.prototype.rebuild = function () {\n\
   this.destroy();\n\
-  this.inner.attr('style', '');\n\
+  this.inner.removeAttribute('style');\n\
   Antiscroll.call(this, this.el, this.options);\n\
   return this;\n\
 };\n\
@@ -2430,14 +2431,14 @@ inherit(Scrollbar.Horizontal, Scrollbar);\n\
 Scrollbar.Horizontal.prototype.update = function () {\n\
   var paneWidth = this.pane.el.offsetWidth,\n\
     trackWidth = paneWidth - this.pane.padding * 2,\n\
-    innerEl = this.pane.inner;\n\
+    scrollWidth = this.pane.inner.scrollWidth;\n\
 \n\
   css(this.el, {\n\
-    width: trackWidth * paneWidth / innerEl.scrollWidth,\n\
-    left: trackWidth * innerEl.scrollLeft / innerEl.scrollWidth\n\
+    width: Math.floor(trackWidth * paneWidth / scrollWidth),\n\
+    transform: 'translateX(' + Math.floor(trackWidth * this.pane.inner.scrollLeft / scrollWidth) + 'px)'\n\
   });\n\
 \n\
-  return paneWidth < innerEl.scrollWidth;\n\
+  return paneWidth < scrollWidth;\n\
 };\n\
 \n\
 /**\n\
@@ -2502,24 +2503,27 @@ inherit(Scrollbar.Vertical, Scrollbar);\n\
 Scrollbar.Vertical.prototype.update = function () {\n\
   var paneHeight = this.pane.el.offsetHeight,\n\
     trackHeight = paneHeight - this.pane.padding * 2,\n\
-  innerEl = this.pane.inner;\n\
+    scrollHeight = this.pane.inner.scrollHeight;\n\
 \n\
-  var scrollbarHeight = trackHeight * paneHeight / innerEl.scrollHeight;\n\
+  var scrollbarHeight = trackHeight * paneHeight / scrollHeight;\n\
   scrollbarHeight = scrollbarHeight < 20 ? 20 : scrollbarHeight;\n\
 \n\
-  var topPos = trackHeight * innerEl.scrollTop / innerEl.scrollHeight;\n\
+  var topPos = trackHeight * this.pane.inner.scrollTop / scrollHeight;\n\
 \n\
   if((topPos + scrollbarHeight) > trackHeight) {\n\
     var diff = (topPos + scrollbarHeight) - trackHeight;\n\
     topPos = topPos - diff - 3;\n\
   }\n\
 \n\
+  scrollbarHeight = Math.floor(scrollbarHeight);\n\
+  topPos = Math.floor(topPos);\n\
+\n\
   css(this.el, {\n\
     height: scrollbarHeight,\n\
-    top: topPos\n\
+    transform: 'translateY(' + topPos + 'px)'\n\
   });\n\
 \n\
-  return paneHeight < innerEl.scrollHeight;\n\
+  return paneHeight < scrollHeight;\n\
 };\n\
 \n\
 /**\n\
@@ -2571,6 +2575,12 @@ function scrollbarSize () {\n\
     size = div.offsetWidth - div.clientWidth;\n\
 \n\
     document.body.removeChild(div);\n\
+\n\
+    console.log('scrollbar size', size);\n\
+    if (size === 0) {\n\
+      // HACK: assume it's a floating scrollbars browser like FF on MacOS Lion\n\
+      size = 13;\n\
+    }\n\
   }\n\
 \n\
   return size;\n\

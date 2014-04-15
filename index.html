@@ -200,11 +200,11 @@
     <script>
       // window.localStorage.debug = '*';
 
-      var Antiscroll = require('antiscroll');
+      var antiscroll = require('antiscroll');
       var events = require('event');
       var q = require('query');
 
-      scroller = new Antiscroll(q('.box-wrap'));
+      scroller = antiscroll(q('.box-wrap'));
 
       function updateText() {
         q('#rows b').textContent = q.all('.box-wrap tr').length;
