@@ -5,6 +5,7 @@ lint:
 
 build: components antiscroll.js antiscroll.css template.html
 	@component build --dev
+	@autoprefixer build/build.css
 
 components: component.json
 	@component install --dev
