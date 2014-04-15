@@ -303,14 +303,14 @@ inherit(Scrollbar.Horizontal, Scrollbar);
 Scrollbar.Horizontal.prototype.update = function () {
   var paneWidth = this.pane.el.offsetWidth,
     trackWidth = paneWidth - this.pane.padding * 2,
-    innerEl = this.pane.inner;
+    scrollWidth = this.pane.inner.scrollWidth;
 
   css(this.el, {
-    width: trackWidth * paneWidth / innerEl.scrollWidth,
-    left: trackWidth * innerEl.scrollLeft / innerEl.scrollWidth
+    width: Math.floor(trackWidth * paneWidth / scrollWidth),
+    transform: 'translateX(' + Math.floor(trackWidth * this.pane.inner.scrollLeft / scrollWidth) + 'px)'
   });
 
-  return paneWidth < innerEl.scrollWidth;
+  return paneWidth < scrollWidth;
 };
 
 /**
@@ -375,24 +375,27 @@ inherit(Scrollbar.Vertical, Scrollbar);
 Scrollbar.Vertical.prototype.update = function () {
   var paneHeight = this.pane.el.offsetHeight,
     trackHeight = paneHeight - this.pane.padding * 2,
-  innerEl = this.pane.inner;
+    scrollHeight = this.pane.inner.scrollHeight;
 
-  var scrollbarHeight = trackHeight * paneHeight / innerEl.scrollHeight;
+  var scrollbarHeight = trackHeight * paneHeight / scrollHeight;
   scrollbarHeight = scrollbarHeight < 20 ? 20 : scrollbarHeight;
 
-  var topPos = trackHeight * innerEl.scrollTop / innerEl.scrollHeight;
+  var topPos = trackHeight * this.pane.inner.scrollTop / scrollHeight;
 
   if((topPos + scrollbarHeight) > trackHeight) {
     var diff = (topPos + scrollbarHeight) - trackHeight;
     topPos = topPos - diff - 3;
   }
 
+  scrollbarHeight = Math.floor(scrollbarHeight);
+  topPos = Math.floor(topPos);
+
   css(this.el, {
     height: scrollbarHeight,
-    top: topPos
+    transform: 'translateY(' + topPos + 'px)'
   });
 
-  return paneHeight < innerEl.scrollHeight;
+  return paneHeight < scrollHeight;
 };
 
 /**
