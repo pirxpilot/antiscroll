@@ -213,8 +213,9 @@ Scrollbar.prototype.mousedown = function (ev) {
 
   this.dragging = true;
 
-  this.startPageY = ev.pageY - parseInt(css(this.el, 'top'), 10);
-  this.startPageX = ev.pageX - parseInt(css(this.el, 'left'), 10);
+  var scroll = matrix2position(css(this.el, 'transform'));
+  this.startPageX = ev.pageX - scroll[0];
+  this.startPageY = ev.pageY - scroll[1];
 
   this.ownerEvents = events(this.el.ownerDocument, this);
 
@@ -455,4 +456,19 @@ function scrollbarSize () {
   }
 
   return size;
+}
+
+
+/**
+ * Calculate scrollbar position from transform matrix
+ *
+ * Transform matrix looks like this: matrix(1, 0, 0, 1, X, Y) - we are only interested in 2 last numbers
+ */
+
+function matrix2position(str) {
+  var match = str.match(/^\w+\((.+)\)/);
+  if (!match) {
+    return [0, 0];
+  }
+  return match[1].split(/,\s+/).map(Number).slice(-2);
 }
