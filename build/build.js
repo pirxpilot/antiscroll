@@ -759,14 +759,6 @@ function array(obj, fn, ctx) {\n\
 }\n\
 //@ sourceURL=component-each/index.js"
 ));
-require.register("visionmedia-debug/index.js", Function("exports, require, module",
-"if ('undefined' == typeof window) {\n\
-  module.exports = require('./lib/debug');\n\
-} else {\n\
-  module.exports = require('./debug');\n\
-}\n\
-//@ sourceURL=visionmedia-debug/index.js"
-));
 require.register("visionmedia-debug/debug.js", Function("exports, require, module",
 "\n\
 /**\n\
@@ -2341,8 +2333,9 @@ Scrollbar.prototype.mousedown = function (ev) {\n\
 \n\
   this.dragging = true;\n\
 \n\
-  this.startPageY = ev.pageY - parseInt(css(this.el, 'top'), 10);\n\
-  this.startPageX = ev.pageX - parseInt(css(this.el, 'left'), 10);\n\
+  var scroll = matrix2position(css(this.el, 'transform'));\n\
+  this.startPageX = ev.pageX - scroll[0];\n\
+  this.startPageY = ev.pageY - scroll[1];\n\
 \n\
   this.ownerEvents = events(this.el.ownerDocument, this);\n\
 \n\
@@ -2576,16 +2569,29 @@ function scrollbarSize () {\n\
 \n\
     document.body.removeChild(div);\n\
 \n\
-    console.log('scrollbar size', size);\n\
     if (size === 0) {\n\
       // HACK: assume it's a floating scrollbars browser like FF on MacOS Lion\n\
-      size = 13;\n\
+      size = 14;\n\
     }\n\
   }\n\
 \n\
   return size;\n\
 }\n\
-//@ sourceURL=antiscroll/antiscroll.js"
+\n\
+\n\
+/**\n\
+ * Calculate scrollbar position from transform matrix\n\
+ *\n\
+ * Transform matrix looks like this: matrix(1, 0, 0, 1, X, Y) - we are only interested in 2 last numbers\n\
+ */\n\
+\n\
+function matrix2position(str) {\n\
+  var match = str.match(/^\\w+\\((.+)\\)/);\n\
+  if (!match) {\n\
+    return [0, 0];\n\
+  }\n\
+  return match[1].split(/,\\s+/).map(Number).slice(-2);\n\
+}//@ sourceURL=antiscroll/antiscroll.js"
 ));
 
 
@@ -2642,9 +2648,9 @@ require.alias("component-props/index.js", "component-to-function/deps/props/inde
 
 require.alias("component-type/index.js", "component-each/deps/type/index.js");
 
-require.alias("visionmedia-debug/index.js", "component-css/deps/debug/index.js");
 require.alias("visionmedia-debug/debug.js", "component-css/deps/debug/debug.js");
-
+require.alias("visionmedia-debug/debug.js", "component-css/deps/debug/index.js");
+require.alias("visionmedia-debug/debug.js", "visionmedia-debug/index.js");
 require.alias("ianstormtaylor-to-camel-case/index.js", "component-css/deps/to-camel-case/index.js");
 require.alias("ianstormtaylor-to-space-case/index.js", "ianstormtaylor-to-camel-case/deps/to-space-case/index.js");
 require.alias("ianstormtaylor-to-no-case/index.js", "ianstormtaylor-to-space-case/deps/to-no-case/index.js");
