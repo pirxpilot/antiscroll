@@ -7,10 +7,10 @@
   "dependencies": {
     "component/bind": "*",
     "component/classes": "*",
-    "component/css": "*",
     "component/events": "*",
     "component/inherit": "*",
-    "component/query": "*"
+    "component/query": "*",
+    "ianstormtaylor/css": "*"
   },
   "development": {
     "component/event": "*"
