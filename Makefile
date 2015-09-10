@@ -1,16 +1,30 @@
-all: lint build
+PROJECT=antiscroll
+
+all: check build
+
+check: lint
 
 lint:
-	@jshint antiscroll.js
+	jshint antiscroll.js
 
-build: components antiscroll.js antiscroll.css template.html
-	@component build --dev
-	@autoprefixer build/build.css
+build: build/build.js build/build.css
 
-components: component.json
-	@component install --dev
+build/build.js: node_modules antiscroll.js
+	mkdir -p build
+	browserify \
+		--transform stringify \
+		--require component-event:event \
+		--require component-query:query \
+		--require ./antiscroll.js:$(PROJECT) \
+		--outfile $@
+
+build/build.css: antiscroll.css
+	cp $< $@
+
+node_modules: package.json
+	npm install
 
 clean:
-	rm -fr build components
+	rm -fr build node_modules
 
-.PHONY: clean
+.PHONY: clean lint check all build

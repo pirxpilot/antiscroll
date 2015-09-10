@@ -1,0 +1,40 @@
+{
+  "name": "code42day-antiscroll",
+  "version": "1.3.0",
+  "description": "OS X Lion style cross-browser native scrolling on the web that gets out of the way.",
+  "scripts": {
+    "test": "make check"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/code42day/antiscroll.git"
+  },
+  "keywords": [
+    "browser"
+  ],
+  "dependencies": {
+    "component-bind": "^1.0.0",
+    "component-classes": "^1.2.4",
+    "component-events": "^1.0.9",
+    "component-inherit": "~0",
+    "component-query": "~0",
+    "ianstormtaylor-css": "code42day/css#npm"
+  },
+  "browser": {
+    "bind": "component-bind",
+    "classes": "component-classes",
+    "events": "component-events",
+    "inherit": "component-inherit",
+    "query": "component-query",
+    "css": "ianstormtaylor-css"
+  },
+  "author": "Damian Krzeminski <pirxpilot@code42day.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/code42day/antiscroll/issues"
+  },
+  "devDependencies": {
+    "component-event": "^0.1.4",
+    "stringify": "^3.1.0"
+  }
+}
