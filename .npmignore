@@ -3,7 +3,6 @@ build
 component.json
 components
 example
-History.md
-License.txt
 Makefile
 test
+index.html

@@ -12,6 +12,7 @@
   "keywords": [
     "browser"
   ],
+  "main": "antiscroll.js",
   "dependencies": {
     "component-bind": "^1.0.0",
     "component-classes": "^1.2.4",
@@ -27,6 +28,11 @@
     "inherit": "component-inherit",
     "query": "component-query",
     "css": "ianstormtaylor-css"
+  },
+  "browserify": {
+    "transform": [
+      "stringify"
+    ]
   },
   "author": "Damian Krzeminski <pirxpilot@code42day.com>",
   "license": "MIT",

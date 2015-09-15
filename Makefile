@@ -12,7 +12,6 @@ build: build/build.js build/build.css
 build/build.js: node_modules antiscroll.js
 	mkdir -p build
 	browserify \
-		--transform stringify \
 		--require component-event:event \
 		--require component-query:query \
 		--require ./antiscroll.js:$(PROJECT) \
