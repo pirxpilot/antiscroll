@@ -2,7 +2,7 @@
   "name": "antiscroll",
   "repo": "code42day/antiscroll",
   "description": "OS X Lion style cross-browser native scrolling on the web that gets out of the way.",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "keywords": [],
   "dependencies": {
     "component/bind": "*",
