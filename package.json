@@ -14,20 +14,20 @@
   ],
   "main": "antiscroll.js",
   "dependencies": {
+    "code42day-css": "^0.3.1",
     "component-bind": "^1.0.0",
     "component-classes": "^1.2.4",
     "component-events": "^1.0.9",
     "component-inherit": "~0",
-    "component-query": "~0",
-    "ianstormtaylor-css": "code42day/css#npm"
+    "component-query": "~0"
   },
   "browser": {
     "bind": "component-bind",
     "classes": "component-classes",
+    "css": "code42day-css",
     "events": "component-events",
     "inherit": "component-inherit",
-    "query": "component-query",
-    "css": "ianstormtaylor-css"
+    "query": "component-query"
   },
   "browserify": {
     "transform": [
