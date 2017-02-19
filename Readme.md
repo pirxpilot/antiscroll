@@ -13,9 +13,9 @@ the scrollbars popularized by OS X Lion that retains native properties.
 
 ## Installation
 
-  Install with [component(1)](http://component.io):
+  Install with [npm]:
 
-    $ component install code42day/antiscroll
+    $ npm install @pirxpilot/antiscroll
 
 ## Features
 
@@ -29,7 +29,7 @@ the scrollbars popularized by OS X Lion that retains native properties.
 
 ## Demo
 
-Please click [here](http://code42day.github.io/antiscroll/) to see it in
+Please click [here](http://pirxpilot.github.io/antiscroll/) to see it in
 action.
 
 ## Installation
@@ -117,7 +117,7 @@ Sharp](http://jdsharp.us/jQuery/minute/calculate-scrollbar-width.php).
 ### Contributors
 
 jQuery plugin written by [@guille]
-Other contributors listed [here](https://github.com/code42day/antiscroll/graphs/contributors)
+Other contributors listed [here](https://github.com/pirxpilot/antiscroll/graphs/contributors)
 
 ## TODO
 
@@ -153,3 +153,4 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [LearnBoost/antiscroll]: https://github.com/LearnBoost/antiscroll
 [@guille]: https://github.com/guille
+[npm]: https://www.npmjs.org/
