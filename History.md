@@ -1,8 +1,13 @@
 
+1.3.5 / 2017-03-18
+==================
+
+ * update deprecated dependencies
+
 1.3.4 / 2017-02-18
 ==================
 
- * change name to @pirxpilot/dialog
+ * change name to @pirxpilot/antiscroll
 
 1.3.3 / 2015-09-17
 ==================
