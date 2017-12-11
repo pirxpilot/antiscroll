@@ -32,7 +32,6 @@
   "author": "Damian Krzeminski <pirxpilot@furkot.com>",
   "license": "MIT",
   "devDependencies": {
-    "component-event": "^0.1.4",
     "stringify": "^3.1.0"
   }
 }
