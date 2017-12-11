@@ -36,5 +36,10 @@
   "license": "MIT",
   "devDependencies": {
     "stringify": "^5.2.0"
-  }
+  },
+  "files": [
+    "antiscroll.js",
+    "antiscroll.css",
+    "template.html"
+  ]
 }
