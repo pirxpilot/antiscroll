@@ -15,13 +15,11 @@
   "main": "antiscroll.js",
   "dependencies": {
     "@pirxpilot/css": "^0.3.2",
-    "component-events": "^1.0.9",
     "component-inherit": "~0",
     "component-query": "~0"
   },
   "browser": {
     "css": "@pirxpilot/css",
-    "events": "component-events",
     "inherit": "component-inherit",
     "query": "component-query"
   },

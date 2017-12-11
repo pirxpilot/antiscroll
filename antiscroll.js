@@ -1,9 +1,48 @@
 var css = require('css');
-var events = require('events');
 var q = require('query');
 var inherit = require('inherit');
 
 module.exports = Antiscroll;
+
+
+function events(el, obj) {
+  var handlers = {};
+
+  function bind(name, handler, opts) {
+    if (!handler) {
+      handler = name;
+    }
+    if (typeof(handler) === 'string') {
+      handler = obj[handler].bind(obj);
+    }
+    el.addEventListener(name, handler, opts);
+    handlers[name] = {
+      handler: handler,
+      opts: opts
+    };
+  }
+
+  function do_unbind(name) {
+    var h = handlers[name];
+    if (!h) { return; }
+    el.removeEventListener(name, h.handler, h.opts);
+    delete handlers[name];
+  }
+
+  function unbind(name) {
+    if (!name) { return unbindAll(); }
+    do_unbind(name);
+  }
+
+  function unbindAll() {
+    Object.keys(handlers).forEach(do_unbind);
+  }
+
+  return {
+    bind: bind,
+    unbind: unbind
+  };
+}
 
 /**
  * Antiscroll pane constructor.
@@ -116,17 +155,17 @@ function Scrollbar (pane) {
 
   // hovering
   this.paneEvents = events(this.pane.el, this);
-  this.paneEvents.bind('mouseenter', 'mouseenter');
-  this.paneEvents.bind('mouseleave', 'mouseleave');
+  this.paneEvents.bind('mouseenter');
+  this.paneEvents.bind('mouseleave');
 
   // dragging
   this.events = events(this.el, this);
-  this.events.bind('mousedown', 'mousedown');
+  this.events.bind('mousedown');
 
   // scrolling
   this.innerEvents = events(this.pane.inner, this);
-  this.innerEvents.bind('scroll', 'scroll');
-  this.innerEvents.bind('mousewheel', 'mousewheel');
+  this.innerEvents.bind('scroll');
+  this.innerEvents.bind('mousewheel');
 
   // show
   var initialDisplay = this.pane.options.initialDisplay;
@@ -220,7 +259,7 @@ Scrollbar.prototype.mousedown = function (ev) {
   // prevent crazy selections on IE
   this.el.ownerDocument.onselectstart = function () { return false; };
 
-  this.ownerEvents.bind('mousemove', 'mousemove');
+  this.ownerEvents.bind('mousemove');
   this.ownerEvents.bind('mouseup', 'cancelDragging');
 };
 
