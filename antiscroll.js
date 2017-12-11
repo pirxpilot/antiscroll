@@ -1,4 +1,3 @@
-var bind = require('bind');
 var css = require('css');
 var events = require('events');
 var q = require('query');
@@ -135,7 +134,7 @@ function Scrollbar (pane) {
   if (initialDisplay !== false) {
     this.show();
     if (this.pane.autoHide) {
-      this.hiding = setTimeout(bind(this, 'hide'), parseInt(initialDisplay, 10) || 3000);
+      this.hiding = setTimeout(this.hide.bind(this), parseInt(initialDisplay, 10) || 3000);
     }
   }
 }
@@ -193,7 +192,7 @@ Scrollbar.prototype.scroll = function () {
     this.show();
     if (!this.enter && !this.dragging) {
       if (this.pane.autoHide) {
-        this.hiding = setTimeout(bind(this, 'hide'), 1500);
+        this.hiding = setTimeout(this.hide.bind(this), 1500);
       }
     }
   }
