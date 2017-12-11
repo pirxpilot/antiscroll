@@ -16,14 +16,12 @@
   "dependencies": {
     "@pirxpilot/css": "^0.3.2",
     "component-bind": "^1.0.0",
-    "component-classes": "^1.2.4",
     "component-events": "^1.0.9",
     "component-inherit": "~0",
     "component-query": "~0"
   },
   "browser": {
     "bind": "component-bind",
-    "classes": "component-classes",
     "css": "@pirxpilot/css",
     "events": "component-events",
     "inherit": "component-inherit",

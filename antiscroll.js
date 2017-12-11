@@ -1,5 +1,4 @@
 var bind = require('bind');
-var classes = require('classes');
 var css = require('css');
 var events = require('events');
 var q = require('query');
@@ -253,7 +252,7 @@ Scrollbar.prototype.cancelDragging = function() {
 
 Scrollbar.prototype.show = function () {
   if (!this.shown && this.update()) {
-    classes(this.el).add('antiscroll-scrollbar-shown');
+    this.el.classList.add('antiscroll-scrollbar-shown');
     if (this.hiding) {
       clearTimeout(this.hiding);
       this.hiding = null;
@@ -271,7 +270,7 @@ Scrollbar.prototype.show = function () {
 Scrollbar.prototype.hide = function () {
   if (this.pane.autoHide !== false && this.shown) {
     // check for dragging
-    classes(this.el).remove('antiscroll-scrollbar-shown');
+    this.el.classList.remove('antiscroll-scrollbar-shown');
     this.shown = false;
   }
 };
