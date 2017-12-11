@@ -3,6 +3,17 @@ var q = require('query');
 var inherit = require('inherit');
 var events = require('@pirxpilot/events');
 
+var passiveFlag = false;
+
+try {
+  window.addEventListener(
+    "test",
+    null,
+    Object.defineProperty({}, "passive", {
+      get: function() { passiveFlag = { passive: true }; }
+  }));
+} catch(err) {}
+
 module.exports = Antiscroll;
 
 /**
@@ -126,7 +137,7 @@ function Scrollbar (pane) {
   // scrolling
   this.innerEvents = events(this.pane.inner, this);
   this.innerEvents.bind('scroll');
-  this.innerEvents.bind('mousewheel');
+  this.innerEvents.bind('mousewheel', 'mousewheel', passiveFlag);
 
   // show
   var initialDisplay = this.pane.options.initialDisplay;
