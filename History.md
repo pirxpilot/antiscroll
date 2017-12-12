@@ -1,4 +1,12 @@
 
+1.4.0 / 2017-12-12
+==================
+
+ * upgrade stringify module
+ * enable passive flag for listeners that support it
+ * use @pirxpilot/events instead of component-events
+ * remove component-bind and component-classes
+
 1.3.5 / 2017-03-18
 ==================
 
