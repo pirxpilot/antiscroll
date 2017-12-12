@@ -1,9 +1,18 @@
-var bind = require('bind');
-var classes = require('classes');
 var css = require('css');
-var events = require('events');
 var q = require('query');
 var inherit = require('inherit');
+var events = require('@pirxpilot/events');
+
+var passiveFlag = false;
+
+try {
+  window.addEventListener(
+    "test",
+    null,
+    Object.defineProperty({}, "passive", {
+      get: function() { passiveFlag = { passive: true }; }
+  }));
+} catch(err) {}
 
 module.exports = Antiscroll;
 
@@ -118,17 +127,17 @@ function Scrollbar (pane) {
 
   // hovering
   this.paneEvents = events(this.pane.el, this);
-  this.paneEvents.bind('mouseenter', 'mouseenter');
-  this.paneEvents.bind('mouseleave', 'mouseleave');
+  this.paneEvents.bind('mouseenter');
+  this.paneEvents.bind('mouseleave');
 
   // dragging
   this.events = events(this.el, this);
-  this.events.bind('mousedown', 'mousedown');
+  this.events.bind('mousedown');
 
   // scrolling
   this.innerEvents = events(this.pane.inner, this);
-  this.innerEvents.bind('scroll', 'scroll');
-  this.innerEvents.bind('mousewheel', 'mousewheel');
+  this.innerEvents.bind('scroll');
+  this.innerEvents.bind('mousewheel', 'mousewheel', passiveFlag);
 
   // show
   var initialDisplay = this.pane.options.initialDisplay;
@@ -136,7 +145,7 @@ function Scrollbar (pane) {
   if (initialDisplay !== false) {
     this.show();
     if (this.pane.autoHide) {
-      this.hiding = setTimeout(bind(this, 'hide'), parseInt(initialDisplay, 10) || 3000);
+      this.hiding = setTimeout(this.hide.bind(this), parseInt(initialDisplay, 10) || 3000);
     }
   }
 }
@@ -194,7 +203,7 @@ Scrollbar.prototype.scroll = function () {
     this.show();
     if (!this.enter && !this.dragging) {
       if (this.pane.autoHide) {
-        this.hiding = setTimeout(bind(this, 'hide'), 1500);
+        this.hiding = setTimeout(this.hide.bind(this), 1500);
       }
     }
   }
@@ -222,7 +231,7 @@ Scrollbar.prototype.mousedown = function (ev) {
   // prevent crazy selections on IE
   this.el.ownerDocument.onselectstart = function () { return false; };
 
-  this.ownerEvents.bind('mousemove', 'mousemove');
+  this.ownerEvents.bind('mousemove');
   this.ownerEvents.bind('mouseup', 'cancelDragging');
 };
 
@@ -253,7 +262,7 @@ Scrollbar.prototype.cancelDragging = function() {
 
 Scrollbar.prototype.show = function () {
   if (!this.shown && this.update()) {
-    classes(this.el).add('antiscroll-scrollbar-shown');
+    this.el.classList.add('antiscroll-scrollbar-shown');
     if (this.hiding) {
       clearTimeout(this.hiding);
       this.hiding = null;
@@ -271,7 +280,7 @@ Scrollbar.prototype.show = function () {
 Scrollbar.prototype.hide = function () {
   if (this.pane.autoHide !== false && this.shown) {
     // check for dragging
-    classes(this.el).remove('antiscroll-scrollbar-shown');
+    this.el.classList.remove('antiscroll-scrollbar-shown');
     this.shown = false;
   }
 };
