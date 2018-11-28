@@ -15,8 +15,7 @@
   "main": "antiscroll.js",
   "dependencies": {
     "@pirxpilot/css": "^0.3.2",
-    "@pirxpilot/events": "~1",
-    "component-inherit": "~0"
+    "@pirxpilot/events": "~1"
   },
   "browser": {
     "css": "@pirxpilot/css",
@@ -37,6 +36,7 @@
   },
   "files": [
     "antiscroll.js",
+    "lib",
     "antiscroll.css",
     "template.html"
   ]
