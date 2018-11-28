@@ -200,9 +200,9 @@
     <script>
       // window.localStorage.debug = '*';
 
-      var antiscroll = require('antiscroll');
+      var Antiscroll = require('antiscroll');
 
-      scroller = antiscroll(document.querySelector('.box-wrap'));
+      var scroller = new Antiscroll(document.querySelector('.box-wrap'));
 
       function updateText() {
         document.querySelector('#rows b').textContent = document.querySelectorAll('.box-wrap tr').length;
@@ -223,19 +223,17 @@
       });
 
       document.querySelector("#addCol").addEventListener('click', function() {
-        var i, els = document.querySelectorAll('.box-wrap tr');
-        for(i = 0; i < els.length; i++) {
-          els[i].appendChild(document.querySelector('td:last-of-type', els[i]).cloneNode(true));
-        };
+        document.querySelectorAll('.box-wrap tr').forEach(function(el) {
+          el.appendChild(document.querySelector('td:last-of-type', el).cloneNode(true));
+        });
         updateText();
         scroller.refresh();
       });
 
       document.querySelector("#removeCol").addEventListener('click', function() {
-        var i, els = document.querySelectorAll('.box-wrap tr td:last-of-type');
-        for(i = 0; i < els.length; i++) {
-          els[i].parentNode.removeChild(els[i]);
-        }
+        document.querySelectorAll('.box-wrap tr td:last-of-type').forEach(function(el) {
+          el.remove();
+        });
         updateText();
         scroller.refresh();
       });
