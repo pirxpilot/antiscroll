@@ -1,5 +1,4 @@
 var css = require('css');
-var q = require('query');
 var inherit = require('inherit');
 var events = require('@pirxpilot/events');
 
@@ -34,7 +33,7 @@ function Antiscroll (el, opts) {
   this.autoHide = false !== this.options.autoHide;
   this.padding = undefined === this.options.padding ? 2 : this.options.padding;
 
-  this.inner = q('.antiscroll-inner', this.el);
+  this.inner = this.el.querySelector('.antiscroll-inner');
 
   css(this.inner, {
     width:  this.inner.offsetWidth + (this.y ? scrollbarSize() : 0),
@@ -294,7 +293,7 @@ Scrollbar.prototype.hide = function () {
 Scrollbar.Horizontal = function (pane) {
   pane.el.insertAdjacentHTML('beforeend',
     '<div class="antiscroll-scrollbar antiscroll-scrollbar-horizontal"/>');
-  this.el = q('.antiscroll-scrollbar-horizontal', pane.el);
+  this.el = pane.el.querySelector('.antiscroll-scrollbar-horizontal');
   Scrollbar.call(this, pane);
 };
 
@@ -366,7 +365,7 @@ Scrollbar.Horizontal.prototype.mousewheel = function (ev, delta, x) {
 Scrollbar.Vertical = function (pane) {
   pane.el.insertAdjacentHTML('beforeend',
     '<div class="antiscroll-scrollbar antiscroll-scrollbar-vertical"/>');
-  this.el = q('.antiscroll-scrollbar-vertical', pane.el);
+  this.el = pane.el.querySelector('.antiscroll-scrollbar-vertical');
   Scrollbar.call(this, pane);
 };
 
@@ -453,7 +452,7 @@ function scrollbarSize () {
   if (size === undefined) {
     document.body.insertAdjacentHTML('beforeend', require('./template.html'));
 
-    var div = q('#antiscroll-size-detection');
+    var div = document.querySelector('#antiscroll-size-detection');
     size = div.offsetWidth - div.clientWidth;
 
     document.body.removeChild(div);

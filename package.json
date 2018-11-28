@@ -16,13 +16,11 @@
   "dependencies": {
     "@pirxpilot/css": "^0.3.2",
     "@pirxpilot/events": "~1",
-    "component-inherit": "~0",
-    "component-query": "~0"
+    "component-inherit": "~0"
   },
   "browser": {
     "css": "@pirxpilot/css",
-    "inherit": "component-inherit",
-    "query": "component-query"
+    "inherit": "component-inherit"
   },
   "browserify": {
     "transform": [
