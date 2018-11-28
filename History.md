@@ -1,4 +1,11 @@
 
+2.0.0 / 2018-11-27
+==================
+
+ * use new Antiscroll() or Antiscroll.of() to construct antiscroll 
+ * rewrite in ES6 to remove component-inherit 
+ * stop using component-query
+
 1.4.0 / 2017-12-12
 ==================
 
