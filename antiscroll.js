@@ -25,12 +25,7 @@ class Antiscroll {
 
     this.inner = this.el.querySelector('.antiscroll-inner');
 
-    css(this.inner, {
-      width:  this.inner.offsetWidth + (this.y ? scrollbarSize() : 0),
-      height: this.inner.offsetHeight + (this.x ? scrollbarSize() : 0)
-    });
-
-    this.refresh();
+    this.rebuild();
   }
 
   /**
@@ -95,7 +90,13 @@ class Antiscroll {
   rebuild() {
     this.destroy();
     this.inner.removeAttribute('style');
-    Antiscroll.call(this, this.el, this.options);
+
+    css(this.inner, {
+      width:  this.inner.offsetWidth + (this.y ? scrollbarSize() : 0),
+      height: this.inner.offsetHeight + (this.x ? scrollbarSize() : 0)
+    });
+
+    this.refresh();
     return this;
   }
 }
