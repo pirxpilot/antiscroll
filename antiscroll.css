@@ -6,11 +6,10 @@
 
 .antiscroll-scrollbar {
   background: rgba(0, 0, 0, 0.5);
-  border-radius: 7px;
   box-shadow: 0 0 1px #fff;
   position: absolute;
   opacity: 0;
-  transition: linear 300ms opacity;
+  transition: opacity linear 300ms, width 300ms, height 300ms;
 }
 
 .antiscroll-scrollbar-shown {
@@ -18,17 +17,27 @@
 }
 
 .antiscroll-scrollbar-horizontal {
-  height: 7px;
+  height: 4px;
   margin-left: 2px;
   bottom: 2px;
   left: 0;
 }
 
+.antiscroll-scrollbar-horizontal:hover,
+.antiscroll-scrollbar-horizontal.antiscroll-scrollbar-dragging {
+  height: 7px;
+}
+
 .antiscroll-scrollbar-vertical {
-  width: 7px;
+  width: 4px;
   margin-top: 2px;
   right: 2px;
   top: 0;
+}
+
+.antiscroll-scrollbar-vertical:hover,
+.antiscroll-scrollbar-vertical.antiscroll-scrollbar-dragging {
+  width: 7px;
 }
 
 .antiscroll-inner {
