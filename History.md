@@ -1,4 +1,10 @@
 
+2.1.0 / 2019-04-05
+==================
+
+ * add thin-fat scrollbar transition
+ * add `dragging` class when scrollbar is beeing dragged
+
 2.0.1 / 2018-11-30
 ==================
 
