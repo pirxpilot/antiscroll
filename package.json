@@ -21,19 +21,9 @@
     "css": "@pirxpilot/css",
     "inherit": "component-inherit"
   },
-  "browserify": {
-    "transform": [
-      "stringify"
-    ]
-  },
-  "stringify": {
-    "minify": true
-  },
   "author": "Damian Krzeminski <pirxpilot@furkot.com>",
   "license": "MIT",
-  "devDependencies": {
-    "stringify": "^5.2.0"
-  },
+  "devDependencies": {},
   "files": [
     "antiscroll.js",
     "lib",
