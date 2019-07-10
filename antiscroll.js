@@ -1,4 +1,4 @@
-const css = require('css');
+const css = require('@pirxpilot/css');
 const { Horizontal, Vertical } = require('./lib/scrollbar');
 
 /**
@@ -107,9 +107,17 @@ class Antiscroll {
 
 let size;
 
+const template = `
+<div id="antiscroll-size-detection"
+  class="antiscroll-inner"
+  style="width:50px;height:50px;overflow-y:scroll;position:absolute;top:-200px;left:-200px;">
+    <div style="height:100px;width:100%"/>
+</div>
+`;
+
 function scrollbarSize () {
   if (size === undefined) {
-    document.body.insertAdjacentHTML('beforeend', require('./template.html'));
+    document.body.insertAdjacentHTML('beforeend', template);
 
     const div = document.querySelector('#antiscroll-size-detection');
     size = div.offsetWidth - div.clientWidth;
