@@ -14,12 +14,8 @@
   ],
   "main": "antiscroll.js",
   "dependencies": {
-    "@pirxpilot/css": "^0.3.2",
+    "@pirxpilot/css": "~1",
     "@pirxpilot/events": "~1"
-  },
-  "browser": {
-    "css": "@pirxpilot/css",
-    "inherit": "component-inherit"
   },
   "author": "Damian Krzeminski <pirxpilot@furkot.com>",
   "license": "MIT",

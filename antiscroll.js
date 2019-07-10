@@ -1,4 +1,4 @@
-const css = require('css');
+const css = require('@pirxpilot/css');
 const { Horizontal, Vertical } = require('./lib/scrollbar');
 
 /**
