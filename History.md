@@ -1,4 +1,11 @@
 
+2.1.1 / 2019-07-09
+==================
+
+ * upgrade @pirxpilot/css to ~1
+ * remove stringify transform
+ * replace template.html with template string
+
 2.1.0 / 2019-04-05
 ==================
 
