@@ -37,7 +37,6 @@
   "files": [
     "antiscroll.js",
     "lib",
-    "antiscroll.css",
-    "template.html"
+    "antiscroll.css"
   ]
 }
