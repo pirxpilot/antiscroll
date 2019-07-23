@@ -1,4 +1,9 @@
 
+2.1.2 / 2019-07-23
+==================
+
+ * fix intermittent exception in cancelDragging
+
 2.1.1 / 2019-07-09
 ==================
 
