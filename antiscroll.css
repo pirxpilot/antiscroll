@@ -1,3 +1,4 @@
+
 .antiscroll-wrap {
   display: inline-block;
   position: relative;
@@ -42,9 +43,9 @@
 
 .antiscroll-inner {
   overflow: scroll;
+  scrollbar-width: none;
 }
 
 .antiscroll-inner::-webkit-scrollbar {
-  width: 1px;
-  height: 1px;
+  display: none;
 }
