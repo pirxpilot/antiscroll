@@ -14,7 +14,6 @@
   ],
   "main": "antiscroll.js",
   "dependencies": {
-    "@pirxpilot/css": "~1",
     "@pirxpilot/events": "~1"
   },
   "author": "Damian Krzeminski <pirxpilot@furkot.com>",

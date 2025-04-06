@@ -1,4 +1,3 @@
-const css = require('@pirxpilot/css');
 const { Horizontal, Vertical } = require('./lib/scrollbar');
 
 /**
@@ -91,10 +90,10 @@ class Antiscroll {
     this.destroy();
     this.inner.removeAttribute('style');
 
-    css(this.inner, {
-      width:  this.inner.offsetWidth + (this.y ? scrollbarSize() : 0),
-      height: this.inner.offsetHeight + (this.x ? scrollbarSize() : 0)
-    });
+    const width = this.inner.offsetWidth + (this.y ? scrollbarSize() : 0);
+    const height = this.inner.offsetHeight + (this.x ? scrollbarSize() : 0);
+    this.inner.style.width = width + 'px';
+    this.inner.style.height = height + 'px';
 
     this.refresh();
     return this;
