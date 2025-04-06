@@ -97,8 +97,8 @@ class Antiscroll {
 
     const width = this.inner.offsetWidth + (this.y ? scrollbarSize() : 0);
     const height = this.inner.offsetHeight + (this.x ? scrollbarSize() : 0);
-    this.inner.style.width = width + 'px';
-    this.inner.style.height = height + 'px';
+    this.inner.style.width = `${width}px`;
+    this.inner.style.height = `${height}px`;
 
     this.refresh();
     return this;
