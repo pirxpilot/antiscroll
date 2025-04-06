@@ -17,10 +17,11 @@ class Antiscroll {
     this.el = el;
     this.options = opts;
 
-    this.x = (false !== this.options.x) || this.options.forceHorizontal;
-    this.y = (false !== this.options.y) || this.options.forceVertical;
+    this.x = false !== this.options.x || this.options.forceHorizontal;
+    this.y = false !== this.options.y || this.options.forceVertical;
     this.autoHide = false !== this.options.autoHide;
-    this.padding = undefined === this.options.padding ? 2 : this.options.padding;
+    this.padding =
+      undefined === this.options.padding ? 2 : this.options.padding;
 
     this.inner = this.el.querySelector('.antiscroll-inner');
 
@@ -34,13 +35,17 @@ class Antiscroll {
    */
 
   refresh() {
-    const needHScroll = this.inner.scrollWidth > this.el.offsetWidth + (this.y ? scrollbarSize() : 0);
-    const needVScroll = this.inner.scrollHeight > this.el.offsetHeight + (this.x ? scrollbarSize() : 0);
+    const needHScroll =
+      this.inner.scrollWidth >
+      this.el.offsetWidth + (this.y ? scrollbarSize() : 0);
+    const needVScroll =
+      this.inner.scrollHeight >
+      this.el.offsetHeight + (this.x ? scrollbarSize() : 0);
 
     if (this.x) {
       if (!this.horizontal && needHScroll) {
         this.horizontal = new Horizontal(this);
-      } else if (this.horizontal && !needHScroll)  {
+      } else if (this.horizontal && !needHScroll) {
         this.horizontal.destroy();
         this.horizontal = null;
       } else if (this.horizontal) {
@@ -51,7 +56,7 @@ class Antiscroll {
     if (this.y) {
       if (!this.vertical && needVScroll) {
         this.vertical = new Vertical(this);
-      } else if (this.vertical && !needVScroll)  {
+      } else if (this.vertical && !needVScroll) {
         this.vertical.destroy();
         this.vertical = null;
       } else if (this.vertical) {
@@ -114,7 +119,7 @@ const template = `
 </div>
 `;
 
-function scrollbarSize () {
+function scrollbarSize() {
   if (size === undefined) {
     document.body.insertAdjacentHTML('beforeend', template);
 

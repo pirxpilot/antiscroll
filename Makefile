@@ -5,7 +5,10 @@ all: check build
 check: lint
 
 lint:
-	jshint antiscroll.js
+	biome ci
+
+format:
+	biome check --fix
 
 build: build/build.js build/build.css
 
@@ -26,4 +29,4 @@ node_modules: package.json
 clean:
 	rm -fr build node_modules
 
-.PHONY: clean lint check all build
+.PHONY: clean lint check all build format
