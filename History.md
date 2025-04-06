@@ -1,4 +1,11 @@
 
+3.0.0 / 2025-04-06
+==================
+
+ * stop testing for passive events support
+ * remove @pirxpilot/css dependency
+ * use esbuild and biome
+
 2.1.3 / 2020-05-31
 ==================
 
