@@ -12,7 +12,8 @@
   "keywords": [
     "browser"
   ],
-  "main": "antiscroll.js",
+  "type": "module",
+  "exports": "./antiscroll.js",
   "dependencies": {
     "@pirxpilot/events": "~1"
   },
