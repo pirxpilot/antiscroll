@@ -200,44 +200,38 @@
     <script>
       // window.localStorage.debug = '*';
 
-      var antiscroll = require('antiscroll');
-      var events = require('event');
-      var q = require('query');
-
-      scroller = antiscroll(q('.box-wrap'));
+      var scroller = new antiscroll.Antiscroll(document.querySelector('.box-wrap'));
 
       function updateText() {
-        q('#rows b').textContent = q.all('.box-wrap tr').length;
-        q("#cols b").textContent = q.all('.box-wrap tr:last-of-type td').length;
+        document.querySelector('#rows b').textContent = document.querySelectorAll('.box-wrap tr').length;
+        document.querySelector("#cols b").textContent = document.querySelectorAll('.box-wrap tr:last-of-type td').length;
       }
 
-      events.bind(q("#addRow"), 'click', function() {
-        q('.box-wrap table').appendChild(q('.box-wrap tr:last-of-type').cloneNode(true));
+      document.querySelector("#addRow").addEventListener('click', function() {
+        document.querySelector('.box-wrap table').appendChild(document.querySelector('.box-wrap tr:last-of-type').cloneNode(true));
         updateText();
         scroller.refresh();
       });
 
-      events.bind(q("#removeRow"), 'click', function() {
-        var el = q('.box-wrap tr:last-of-type');
+      document.querySelector("#removeRow").addEventListener('click', function() {
+        var el = document.querySelector('.box-wrap tr:last-of-type');
         el.parentNode.removeChild(el);
         updateText();
         scroller.refresh();
       });
 
-      events.bind(q("#addCol"), 'click', function() {
-        var i, els = q.all('.box-wrap tr');
-        for(i = 0; i < els.length; i++) {
-          els[i].appendChild(q('td:last-of-type', els[i]).cloneNode(true));
-        };
+      document.querySelector("#addCol").addEventListener('click', function() {
+        document.querySelectorAll('.box-wrap tr').forEach(function(el) {
+          el.appendChild(document.querySelector('td:last-of-type', el).cloneNode(true));
+        });
         updateText();
         scroller.refresh();
       });
 
-      events.bind(q("#removeCol"), 'click', function() {
-        var i, els = q.all('.box-wrap tr td:last-of-type');
-        for(i = 0; i < els.length; i++) {
-          els[i].parentNode.removeChild(els[i]);
-        }
+      document.querySelector("#removeCol").addEventListener('click', function() {
+        document.querySelectorAll('.box-wrap tr td:last-of-type').forEach(function(el) {
+          el.remove();
+        });
         updateText();
         scroller.refresh();
       });
