@@ -15,7 +15,7 @@
   "type": "module",
   "exports": "./antiscroll.js",
   "dependencies": {
-    "@pirxpilot/events": "~1"
+    "@pirxpilot/events": "~3"
   },
   "author": "Damian Krzeminski <pirxpilot@furkot.com>",
   "license": "MIT",
