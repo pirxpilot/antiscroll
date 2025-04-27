@@ -1,4 +1,4 @@
-const { Horizontal, Vertical } = require('./lib/scrollbar');
+import { Horizontal, Vertical } from './lib/scrollbar.js';
 
 /**
  * Antiscroll pane constructor.
@@ -8,7 +8,7 @@ const { Horizontal, Vertical } = require('./lib/scrollbar');
  * @api public
  */
 
-class Antiscroll {
+export class Antiscroll {
   static of(...params) {
     return new Antiscroll(...params);
   }
@@ -130,5 +130,3 @@ function scrollbarSize() {
 
   return size;
 }
-
-module.exports = Antiscroll;

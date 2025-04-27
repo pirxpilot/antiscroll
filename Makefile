@@ -16,7 +16,7 @@ build/build.js: node_modules antiscroll.js
 	mkdir -p build
 	esbuild \
 		--bundle \
-		--global-name=Antiscroll \
+		--global-name=${PROJECT} \
 		--outfile=$@ \
 		antiscroll.js
 
