@@ -19,7 +19,9 @@
   },
   "author": "Damian Krzeminski <pirxpilot@furkot.com>",
   "license": "MIT",
-  "devDependencies": {},
+  "devDependencies": {
+    "@biomejs/biome": "2.3.8"
+  },
   "files": [
     "antiscroll.js",
     "lib",

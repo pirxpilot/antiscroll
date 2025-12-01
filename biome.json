@@ -1,17 +1,19 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-  "organizeImports": {
-    "enabled": true
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
   },
   "vcs": {
+    "enabled": true,
+    "clientKind": "git",
     "useIgnoreFile": true
   },
   "files": {
-    "ignoreUnknown": true,
-    "ignore": [
-      "package.json",
-      "build"
-    ]
+    "ignoreUnknown": true
   },
   "formatter": {
     "enabled": true,
@@ -26,7 +28,7 @@
   },
   "json": {
     "formatter": {
-      "enabled": false
+      "expand": "always"
     }
   },
   "linter": {
@@ -38,9 +40,34 @@
         "noUnusedVariables": "error"
       },
       "complexity": {
-        "noForEach": "off",
-        "useArrowFunction": "off"
+        "noForEach": "off"
+      },
+      "style": {
+        "noUnusedTemplateLiteral": "error",
+        "noUselessElse": "error",
+        "useBlockStatements": "error",
+        "useDefaultParameterLast": "error",
+        "useNumberNamespace": "error",
+        "useSingleVarDeclarator": "error"
+      },
+      "performance": {
+        "noDelete": "off"
+      },
+      "suspicious": {
+        "noAssignInExpressions": "off"
       }
     }
-  }
+  },
+  "overrides": [
+    {
+      "includes": [
+        "index.html"
+      ],
+      "javascript": {
+        "globals": [
+          "antiscroll"
+        ]
+      }
+    }
+  ]
 }

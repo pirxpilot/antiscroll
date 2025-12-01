@@ -1,14 +1,15 @@
 PROJECT=antiscroll
+NODE_BIN=node_modules/.bin
 
 all: check build
 
 check: lint
 
 lint:
-	biome ci
+	$(NODE_BIN)/biome ci
 
 format:
-	biome check --fix
+	$(NODE_BIN)/biome check --fix
 
 build: build/build.js build/build.css
 
