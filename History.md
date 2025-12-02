@@ -1,4 +1,11 @@
 
+4.0.1 / 2025-12-02
+==================
+
+ * add `esbuild` as a dev dependency
+ * add github actions
+ * upgrade biome to 2.3.6
+
 4.0.0 / 2025-04-27
 ==================
 

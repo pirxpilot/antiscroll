@@ -1,6 +1,6 @@
 {
   "name": "@pirxpilot/antiscroll",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "OS X Lion style cross-browser native scrolling on the web that gets out of the way.",
   "scripts": {
     "test": "make check"
