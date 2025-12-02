@@ -1,4 +1,7 @@
-# antiscroll
+[![NPM version][npm-image]][npm-url]
+[![Build Status][build-image]][build-url]
+
+# @pirxpilot/antiscroll
 
 OS X Lion style cross-browser native scrolling on the web that gets out of the way.
 It is a component compatible, jQuery free, clone of [LearnBoost/antiscroll]
@@ -39,7 +42,7 @@ action.
 1. Include the following Javascript
 
 ```javascript
-  var antiscroll = require('Antiscroll');
+  const antiscroll = require('Antiscroll');
 
   antiscroll(document.querySelector('.antiscroll-wrap'));
 ```
@@ -53,17 +56,6 @@ You may remove automatic scrollbar hiding by passing in a key-value to the ```an
     autoHide: false
   });
 ```
-
-## What does it look like?
-
-**Firefox 8 `overflow: scroll` and antiscroll on OS X**
-
-![](http://f.cl.ly/items/3R0y1P1U3r2c0O3Z2533/Image%202011.11.23%208:42:51%20AM.png)
-![](http://f.cl.ly/items/262V403n221p1F3T2S3K/Image%202011.11.23%208:43:32%20AM.png)
-
-**IE 9 `overflow: scroll` and antiscroll**
-
-![](http://f.cl.ly/items/0M0z2t2X42110X3R0313/Image%202011.11.23%2010:35:39%20AM.png)
 
 ## How does it work?
 
@@ -119,17 +111,12 @@ Sharp](http://jdsharp.us/jQuery/minute/calculate-scrollbar-width.php).
 jQuery plugin written by [@guille]
 Other contributors listed [here](https://github.com/pirxpilot/antiscroll/graphs/contributors)
 
-## TODO
-
-- Automatically leverage Joe Hewitt's
-  [scrollability](https://github.com/joehewitt/scrollability) as a replacement
-  technique if a touch-enabled browser is detected.
-
 ## License
 
 (The MIT License)
 
 Copyright (c) 2011 Guillermo Rauch &lt;guillermo@learnboost.com&gt;
+Copyright (c) 2012 [Damian Krzeminski](https://pirxpilot.me)
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -154,3 +141,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 [LearnBoost/antiscroll]: https://github.com/LearnBoost/antiscroll
 [@guille]: https://github.com/guille
 [npm]: https://www.npmjs.org/
+
+[npm-image]: https://img.shields.io/npm/v/@pirxpilot/antiscroll
+[npm-url]: https://npmjs.org/package/@pirxpilot/antiscroll
+
+[build-url]: https://github.com/pirxpilot/antiscroll/actions/workflows/check.yaml
+[build-image]: https://img.shields.io/github/actions/workflow/status/pirxpilot/antiscroll/check.yaml?branch=main

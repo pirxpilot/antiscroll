@@ -9,7 +9,10 @@
   box-shadow: 0 0 1px #fff;
   position: absolute;
   opacity: 0;
-  transition: opacity linear 300ms, width 300ms, height 300ms;
+  transition:
+    opacity linear 300ms,
+    width 300ms,
+    height 300ms;
 }
 
 .antiscroll-scrollbar-shown {
