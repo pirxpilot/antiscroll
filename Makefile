@@ -13,9 +13,9 @@ format:
 
 build: build/build.js build/build.css
 
-build/build.js: node_modules antiscroll.js
+build/build.js: antiscroll.js
 	mkdir -p build
-	esbuild \
+	$(NODE_BIN)/esbuild \
 		--bundle \
 		--global-name=${PROJECT} \
 		--outfile=$@ \
@@ -24,10 +24,7 @@ build/build.js: node_modules antiscroll.js
 build/build.css: antiscroll.css
 	cp $< $@
 
-node_modules: package.json
-	yarn
-
 clean:
-	rm -fr build node_modules
+	rm -fr build
 
 .PHONY: clean lint check all build format
